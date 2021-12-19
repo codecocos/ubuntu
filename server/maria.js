@@ -1,4 +1,5 @@
 const maria = require('mysql');
+
 const conn = maria.createConnection({
   host: 'localhost',
   port: 3307,
@@ -6,4 +7,5 @@ const conn = maria.createConnection({
   password: '1234',
   database: 'maria'
 });
+
 module.exports = conn;

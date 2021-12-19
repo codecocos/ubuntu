@@ -13,7 +13,7 @@ const getCrypto = (_salt, password) => (crypto.createHash("sha512").update(passw
 class AddUser { // AddUser 는 회원가입시 들어오는 데이터를 클래스화 한 것이다.
   constructor(data) {
     this.salt = salt(); // 위에서 만든 함수로 salt 를 생성한다.
-    this.userid = data.userid;
+    this.email = data.email;
     this.password = getCrypto(this.salt, data.password); // 위에서 만든 함수로 비밀번호를 암호화 한다.
     this.name = data.name;
   }

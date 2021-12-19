@@ -41,7 +41,7 @@ function RegisterPage(props) {
     <Formik
       initialValues={{
         email: '',
-        lastName: '',
+        // lastName: '',
         name: '',
         password: '',
         confirmPassword: ''
@@ -49,8 +49,8 @@ function RegisterPage(props) {
       validationSchema={Yup.object().shape({
         name: Yup.string()
           .required('Name is required'),
-        lastName: Yup.string()
-          .required('Last Name is required'),
+        // lastName: Yup.string()
+        //   .required('Last Name is required'),
         email: Yup.string()
           .email('Email is invalid')
           .required('Email is required'),
@@ -68,15 +68,17 @@ function RegisterPage(props) {
             email: values.email,
             password: values.password,
             name: values.name,
-            lastname: values.lastname,
-            image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`
+            //lastname: values.lastname,
+            // image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`
           };
+
+          console.log(dataToSubmit);
 
           dispatch(registerUser(dataToSubmit)).then(response => {
             if (response.payload.success) {
               props.history.push("/login");
             } else {
-              alert(response.payload.err.errmsg)
+              alert(response.payload.err)
             }
           })
 
@@ -118,7 +120,7 @@ function RegisterPage(props) {
                 )}
               </Form.Item>
 
-              <Form.Item required label="Last Name">
+              {/* <Form.Item required label="Last Name">
                 <Input
                   id="lastName"
                   placeholder="Enter your Last Name"
@@ -133,7 +135,7 @@ function RegisterPage(props) {
                 {errors.lastName && touched.lastName && (
                   <div className="input-feedback">{errors.lastName}</div>
                 )}
-              </Form.Item>
+              </Form.Item> */}
 
               <Form.Item required label="Email" hasFeedback validateStatus={errors.email && touched.email ? "error" : 'success'}>
                 <Input
